@@ -3,5 +3,5 @@
 /.setting/
 /.classpath
 /.project
-*.impl
+*.iml
 
