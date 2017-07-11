@@ -2,6 +2,7 @@ package base;
 
 /**
  * Created by xd031 on 2017/7/10.
+ * String 本身提供的主要方法有indexOf,lastIndexOf,regionMatches(true)(true表示忽略大小写!)
  */
 public class HandleString {
   public String reverseString(String input) {
@@ -25,3 +26,4 @@ public class HandleString {
     return first.regionMatches(true, offset1, second, offset2, len);
   }
 }
+
