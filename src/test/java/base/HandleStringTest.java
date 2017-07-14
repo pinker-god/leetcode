@@ -1,6 +1,5 @@
 package base;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
@@ -8,6 +7,7 @@ import static org.junit.Assert.assertThat;
 
 /**
  * Created by xd031 on 2017/7/10.
+ * String 本身提供的主要方法有indexOf,lastIndexOf,regionMatches(true)(true表示忽略大小写!)
  */
 public class HandleStringTest {
     @Test

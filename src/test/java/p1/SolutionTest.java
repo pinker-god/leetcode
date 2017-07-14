@@ -1,8 +1,6 @@
 package p1;
 
-import org.junit.Assert;
 import org.junit.Test;
-import package1.Solution;
 import package1.TreeNode;
 
 /**

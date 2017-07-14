@@ -64,6 +64,6 @@ public class Solution {
       else if (list3.containsAll(temp))
         list.add(str);
     }
-    return  list.toArray(new String[list.size()]);
+    return  list.toArray(new String[0]);
   }
 }

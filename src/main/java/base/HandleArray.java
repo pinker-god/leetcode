@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by xd031 on 2017/7/11.
+ * Arrays主要提供的方法有sort,fill,binarysearch,toString,copyOf,copyOfRange;
  */
 public class HandleArray {
   public <T> T[] ArraySort(T[] arr) {
