@@ -1,5 +1,6 @@
 package bucket;
 
+
 /**
  * Created by xd031 on 2017/7/14.
  */
@@ -30,8 +31,7 @@ public class BucketTransfer {
   }
 
   public BucketState transferState(BucketState initState, BucketTransfer transfer) {
-    boolean flag = checkValid(initState, transfer);
-    if (flag)
+    if (!checkValid(initState, transfer))
       return null;
     else {
       if (transfer.getFromBucket() == Bucket.bucket1)
@@ -53,7 +53,17 @@ public class BucketTransfer {
 
   boolean checkValid(BucketState initState, BucketTransfer transfer) {
     //怎么重构这段代码!
-    return false;
+    if (transfer.getFromBucket() == Bucket.bucket1 && initState.getBucket1() == 0)
+      return false;
+    if (transfer.getFromBucket() == Bucket.bucket2 && initState.getBucket2() == 0)
+      return false;
+    if (transfer.getFromBucket() == Bucket.bucket3 && initState.getBucket3() == 0)
+      return false;
+    if (transfer.getToBucket() == Bucket.bucket2 && initState.getBucket2() == 5)
+      return false;
+    if (transfer.getToBucket() == Bucket.bucket3 && initState.getBucket3() == 3)
+      return false;
+    return true;
   }
 
   //可以设置是因为只能有两种情况,要么把from的谁全部倒掉,要么把to倒满.
