@@ -2,6 +2,7 @@ package package1;
 
 import config.Appconfig;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +15,13 @@ import static org.junit.Assert.*;
 /**
  * Created by xd031 on 2017/7/11.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = Appconfig.class)
 public class SolutionTest {
-  @Autowired
   private Solution solution;
+
+  @Before
+  public void setup() {
+    solution = new Solution();
+  }
 
   @Test
   public void findWords() throws Exception {

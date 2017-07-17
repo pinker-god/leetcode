@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.*;
 
-@Component
 public class Solution {
   public int hammingDistance(int x, int y) {
     int count = 0;
@@ -64,6 +63,6 @@ public class Solution {
       else if (list3.containsAll(temp))
         list.add(str);
     }
-    return  list.toArray(new String[0]);
+    return list.toArray(new String[0]);
   }
 }
