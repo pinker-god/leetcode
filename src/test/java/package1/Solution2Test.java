@@ -26,5 +26,4 @@ public class Solution2Test {
     assertThat(solution.twoSum(input1, target1), is(new int[]{1, 2}));
     assertThat(solution.twoSum(input2, target1), is(new int[]{0, 1}));
   }
-
 }
