@@ -1,6 +1,6 @@
 package package1;
 
-import java.util.Arrays;
+import java.util.*;
 
 /**
  * Created by xd031 on 2017/7/18.
@@ -32,5 +32,55 @@ public class Solution3 {
       }
     }
     return results;
+  }
+
+  public String reverseString(String s) {
+    return new StringBuilder(s).reverse().toString();
+  }
+
+  public int distributeCandies(int[] candies) {
+    int size = candies.length;
+    Set<Integer> set = new HashSet() {
+      {
+        for (int ele : candies) {
+          add(ele);
+        }
+      }
+    };
+    int nums = set.size();
+    if (nums >= size / 2)
+      return size / 2;
+    else
+      return nums;
+  }
+
+  /**
+   * Fizz-three
+   * Buzz -five
+   * FizzBuzz-three*five
+   *
+   * @param n
+   * @return
+   */
+  public List<String> fizzBuzz(int n) {
+    List<String> list = new LinkedList<>();
+    for (int i = 1; i <= n; i++) {
+      list.add(i + "");
+      if (i % 3 == 0)
+        list.set(i - 1, "Fizz");
+      if (i % 5 == 0)
+        list.set(i - 1, "Buzz");
+      if (i % 15 == 0)
+        list.set(i - 1, "FizzBuzz");
+    }
+    return list;
+  }
+
+  /**
+   * @param grid
+   * @return
+   */
+  public int islandPerimeter(int[][] grid) {
+    return 1;
   }
 }

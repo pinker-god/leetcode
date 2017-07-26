@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.Spy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -17,12 +17,9 @@ import static org.hamcrest.Matchers.is;
  * Created by xd031 on 2017/7/10.
  */
 public class Solution1Test {
+  @Spy
   private Solution1 solution;
 
-  @Before
-  public void setup() {
-    solution = new Solution1();
-  }
 
   /**
    * Input: [1,4,3,2]
