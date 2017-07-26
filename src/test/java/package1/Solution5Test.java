@@ -14,6 +14,8 @@ import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class Solution5Test {
+
+
   @Spy
   Solution5 solution;
 
@@ -26,6 +28,14 @@ public class Solution5Test {
    *
    * @throws Exception
    */
+  @Test
+  public void getSum() throws Exception {
+    TreeNode root = new TreeNode(1);
+    root.left = new TreeNode(2);
+    root.right = new TreeNode(3);
+    assertThat(solution.getSum(root), is(6));
+  }
+
   @Test
   public void findTilt() throws Exception {
     TreeNode root = new TreeNode(1);

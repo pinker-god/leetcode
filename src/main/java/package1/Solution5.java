@@ -62,24 +62,19 @@ public class Solution5 {
   public int findTilt(TreeNode root) {
     if (root == null)
       return 0;
+    Queue<TreeNode> temp;
     Queue<TreeNode> queue = new LinkedList<>();
-    Queue<TreeNode> temp = new LinkedList<>();
     int sum = 0;
     queue.offer(root);
-    while (queue != null) {
-      while (queue != null) {
+    while (!queue.isEmpty()) {
+      temp = new LinkedList<>();
+      while (!queue.isEmpty()) {
         TreeNode node = queue.poll();
-        int leftSum = 0;
-        int rightSum = 0;
-        if (node.left != null) {
-          leftSum = getSum(node.left);
+        sum += Math.abs(getSum(node.left) - getSum(node.right));
+        if (node.left != null)
           temp.add(node.left);
-        }
-        if (node.right != null) {
-          rightSum = getSum(node.right);
+        if (node.right != null)
           temp.add(node.right);
-        }
-        sum += Math.abs(leftSum - rightSum);
       }
       queue = temp;
     }
@@ -88,12 +83,21 @@ public class Solution5 {
 
   //用栈中序遍历
   int getSum(TreeNode node) {
+    if (node == null)
+      return 0;
+    int sum = 0;
     Stack<TreeNode> stack = new Stack<>();
-    stack.push(node);
-    while (!stack.empty()) {
-      TreeNode treeNode = stack.peek();
+    TreeNode temp = node;
+    while (temp != null || !stack.isEmpty()) {
+      while (temp != null) {
+        stack.push(temp);
+        temp = temp.left;
+      }
+      temp = stack.pop();
+      sum += temp.val;
+      temp = temp.right;
     }
-    return 0;
+    return sum;
   }
 
 }
