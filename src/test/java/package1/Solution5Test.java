@@ -20,6 +20,27 @@ public class Solution5Test {
   Solution5 solution;
 
   /**
+   * 1
+   * / \
+   * 2   3
+   * / \
+   * 4   5
+   * Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3]
+   *
+   * @throws Exception
+   */
+  @Test
+  public void diameterOfBinaryTree() throws Exception {
+    TreeNode root = new TreeNode(1);
+    root.left = new TreeNode(2);
+    root.right = new TreeNode(3);
+    root.left.left = new TreeNode(4);
+    root.left.right = new TreeNode(5);
+
+    assertThat(solution.diameterOfBinaryTree(root), is(3));
+  }
+
+  /**
    * Input:
    * 1
    * /   \

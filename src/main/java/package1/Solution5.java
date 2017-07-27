@@ -100,4 +100,68 @@ public class Solution5 {
     return sum;
   }
 
+  public int diameterOfBinaryTree(TreeNode root) {
+    return 1;
+  }
+
+  public static void main(String[] args) {
+    //handleFor();
+    //BubbleSort();
+    //selectSort();
+    int arr[] = {3, 4, 6, 2, 1, 7, 9};
+    System.out.println(Arrays.toString(arr));
+    int low = 0, high = arr.length - 1;
+    while (low < high){
+      
+    }
+  }
+
+  private static void selectSort() {
+    int arr[] = {3, 4, 6, 2, 1, 7, 9};
+    System.out.println(Arrays.toString(arr));
+    int min;
+    int index;
+    for (int i = 0; i < arr.length; i++) {
+      min = arr[i];
+      index = i;
+      for (int j = i; j < arr.length; j++) {
+        if (min > arr[j]) {
+          min = arr[j];
+          index = j;
+        }
+      }
+      arr[index] = arr[i];
+      arr[i] = min;
+    }
+    System.out.println(Arrays.toString(arr));
+  }
+
+  private static void BubbleSort() {
+    int arr[] = {3, 4, 6, 2, 1, 7, 9};
+    System.out.println(Arrays.toString(arr));
+
+    for (int i = 0; i < arr.length - 1; i++) {
+      int temp;
+      for (int j = 0; j < arr.length - 1 - i; j++) {
+        if (arr[j] < arr[j + 1]) {
+          temp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
+        }
+      }
+      System.out.println(Arrays.toString(arr));
+    }
+    System.out.println(Arrays.toString(arr));
+  }
+
+  private static void handleFor() {
+    byte[] bytes = new byte[]{1, 2, 3, 4, 5, 6, 7};
+    int[] arrs = {1, 2, 3, 4, 5, 6, 7};
+
+    System.out.println(Arrays.toString(bytes));
+    System.out.println(Arrays.toString(arrs));
+    for (int i = 0; i < bytes.length; i++)//修改值不能用增强for循环
+      bytes[i] = 6;
+    System.out.println(Arrays.toString(bytes));
+  }
 }
