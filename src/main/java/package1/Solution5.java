@@ -108,12 +108,40 @@ public class Solution5 {
     //handleFor();
     //BubbleSort();
     //selectSort();
+    quickSort();
+  }
+
+  public static void quickSort() {
     int arr[] = {3, 4, 6, 2, 1, 7, 9};
     System.out.println(Arrays.toString(arr));
-    int low = 0, high = arr.length - 1;
-    while (low < high){
-      
+    int low;
+    int high;
+    int temp;
+    List visited = new ArrayList();
+    for (int i = 0; i < arr.length - 1; i++) {
+      low = 0;
+      high = arr.length - 1;
+      for (; visited.contains(low); ) {
+        low++;
+      }
+      while (low < high) {
+        while (arr[high] > arr[low]) {
+          high--;
+        }
+        temp = arr[low];
+        arr[low] = arr[high];
+        arr[high] = temp;
+        while (arr[low] < arr[high]) {
+          low++;
+        }
+        temp = arr[low];
+        arr[low] = arr[high];
+        arr[high] = temp;
+      }
+      visited.add(low);
+      System.out.println(Arrays.toString(arr));
     }
+    System.out.println(Arrays.toString(arr));
   }
 
   private static void selectSort() {
