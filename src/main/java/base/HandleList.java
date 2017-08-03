@@ -10,7 +10,7 @@ import java.util.*;
  * List本身提供交集(retainAll),差集(removeAll),并集(addAll),本例的批量删除也很好!
  * 注意list由于值传递(提供了改变自身方法的特性)的原因,许多情况下可以用void来做返回值.
  * Collection提供了reverse(StringBuilder,StringBuffer),unmodifiableXXX,synchronizedXXX,
- * sort,binarySearch,copy,fill,index,indexOfSubList,rotate
+ * sort,binarySearchWithDivideConquer,copy,fill,index,indexOfSubList,rotate
  */
 public class HandleList {
 

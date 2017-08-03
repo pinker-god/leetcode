@@ -100,8 +100,18 @@ public class Solution5 {
     return sum;
   }
 
+  int max = 0;
+
   public int diameterOfBinaryTree(TreeNode root) {
-    return 1;
+    maxDepth(root);
+    return max;
+  }
+
+  public int maxDepth(TreeNode node) {
+    if (node == null)
+      return 0;
+    max = Math.max(maxDepth(node.left) + maxDepth(node.right), max);
+    return Math.max(maxDepth(node.left), maxDepth(node.right)) + 1;
   }
 
   public static void main(String[] args) {
