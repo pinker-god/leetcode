@@ -51,12 +51,6 @@ public class Solution6Test {
     solution = new Solution6();
   }
 
-  @Test
-  public void nextGreaterElement() throws Exception {
-    assertThat(solution.nextGreaterElement(arr1, arr2), is(outArr));
-    Map map = new HashMap();
-//    map.getOrDefault();
-  }
 
   @Test
   public void addTwoNumbers() throws Exception {

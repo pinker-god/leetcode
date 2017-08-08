@@ -37,6 +37,7 @@ public class Solution3Test {
    *
    * @throws Exception
    */
+/*
   @Test
   public void islandPerimeter() throws Exception {
     int grid[][] = new int[][]{
@@ -45,6 +46,7 @@ public class Solution3Test {
     int len = solution.islandPerimeter(grid);
     assertThat(len, is(16));
   }
+*/
 
   @Test
   public void fizzBuzz() throws Exception {

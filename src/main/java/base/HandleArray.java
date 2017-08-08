@@ -26,4 +26,15 @@ public class HandleArray {
     Arrays.fill(arr, start, end, ele);
     return arr;
   }
+
+  public static void main(String[] args) {
+    System.out.println(Arrays.toString(new int[]{1, 2, 3, 4, 5}));
+    int[] arr= new int[]{1, 2, 3, 4, 5};
+    String str = Arrays.toString(arr);
+    String str2=str.substring(1,str.length()-1);
+    String[] result = str2.split(", ");
+    for (String str1 : result) {
+      System.out.print(str1);
+    }
+  }
 }

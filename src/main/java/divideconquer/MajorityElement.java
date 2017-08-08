@@ -35,4 +35,6 @@ public class MajorityElement {
     Arrays.sort(nums);
     return nums[nums.length / 2];
   }
+
+
 }

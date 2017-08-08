@@ -3,6 +3,7 @@ package divideconquer;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
@@ -47,5 +48,4 @@ public class MajorityElementTest {
   public void majorityElement1() throws Exception {
     assertThat(demo.majorityElement1(input), is(result[0]));
   }
-
 }
