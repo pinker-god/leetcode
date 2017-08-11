@@ -25,5 +25,22 @@ public class HandleString {
   public boolean matchStringRegionIngoreCase(String first, int offset1, String second, int offset2, int len) {
     return first.regionMatches(true, offset1, second, offset2, len);
   }
+
+  public static void main(String[] args) {
+    Employee employee = new Employee();
+    employee.age = 10;
+    System.out.println(employee.age);
+    change(employee);
+    System.out.println(employee.age);
+  }
+
+  private static void change(Employee employee) {
+    employee = new Employee();
+    employee.age = 100;
+  }
+
+  static class Employee {
+    public int age;
+  }
 }
 
