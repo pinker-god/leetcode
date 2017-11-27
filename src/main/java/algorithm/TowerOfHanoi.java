@@ -17,4 +17,8 @@ public class TowerOfHanoi {
       hanoi(disk - 1, inter, from, to);
     }
   }
+
+  public void test() {
+
+  }
 }

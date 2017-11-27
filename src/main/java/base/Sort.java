@@ -65,8 +65,9 @@ public class Sort {
    * @return
    */
   private List<Integer> quickSortWithList(List<Integer> list) {
-    if (list.size() <= 1)
+    if (list.size() <= 1) {
       return list;
+    }
     int pivotIndex = (int) Math.floor(list.size() * 1.0 / 2);
     int pivot = list.remove(pivotIndex);
     List<Integer> left = new ArrayList<>();
@@ -80,7 +81,7 @@ public class Sort {
     quickSortWithList(left);
     quickSortWithList(right);
     list.clear();
-    list.addAll(left);
+    list.addAll(left );
     list.add(pivot);
     list.addAll(right);
     return list;
@@ -116,10 +117,12 @@ public class Sort {
     int temp[] = new int[right - left + 1];
     int i = 0;
     while (left <= mid && r <= right) {
-      if (a[left] <= a[r])
+      if (a[left] <= a[r]) {
         temp[i++] = a[left++];
-      else
+      }
+      else {
         temp[i++] = a[r++];
+      }
     }
     while (left <= mid) {
       temp[i++] = a[left++];
@@ -153,7 +156,5 @@ public class Sort {
     System.out.println(Arrays.asList(str1));
     System.out.println(Arrays.asList(str2));
     System.out.println(Arrays.asList(str3));
-
-
   }
 }
