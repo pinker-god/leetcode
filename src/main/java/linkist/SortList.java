@@ -1,7 +1,7 @@
 package linkist;
 
 
-import java.util.List;
+import java.util.Optional;
 
 /**
  * @author pinker on 2017/11/27
@@ -41,27 +41,30 @@ public class SortList {
       cur = cur.next;
       N++;
     }
+
     int width = N / k, rem = N % k;
+
     ListNode[] ans = new ListNode[k];
     cur = root;
     for (int i = 0; i < k; ++i) {
-      ListNode head = new ListNode(0), write = head;
-      for (int j = 0; j < width + (i < rem ? 1 : 0); ++j) {
-        write = write.next = new ListNode(cur.val);
+      ListNode head = cur;
+      for (int j = 0; j < width + (i < rem ? 1 : 0) - 1; ++j) {
         if (cur != null) {
           cur = cur.next;
         }
       }
-      ans[i] = head.next;
+      if (cur != null) {
+        ListNode prev = cur;
+        cur = cur.next;
+        prev.next = null;
+      }
+      ans[i] = head;
     }
     return ans;
   }
 
   private ListNode[] method1(ListNode root, int k) {
     ListNode[] nodes = new ListNode[k];
-    if (root == null) {
-      return nodes;
-    }
     ListNode dummy = new ListNode(0);
     dummy.next = root;
     ListNode cur = dummy;
@@ -77,14 +80,15 @@ public class SortList {
     int i;
     for (i = 1; i < k; i++) {
       cur = nodes[i - 1];
-      for (int j = 0; j < avg + (i < rem ? 1 : 0); j++) {
-        cur = cur.next;
+      for (int j = 0; j < avg + (rem <= i ? 1 : 0) - 1; j++) {
+        if (cur != null) {
+          cur = cur.next;
+        }
       }
-      nodes[i] = cur.next;
-      if (nodes[i] == null) {
-        return nodes;
+      nodes[i] = Optional.ofNullable(cur).map(node -> node.next).orElse(null);
+      if (cur != null) {
+        cur.next = null;
       }
-      cur.next = null;
     }
     return nodes;
   }
