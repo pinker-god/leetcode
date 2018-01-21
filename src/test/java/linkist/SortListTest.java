@@ -11,6 +11,62 @@ import static org.junit.Assert.*;
  * @author pinker on 2017/11/27
  */
 public class SortListTest {
+  @Test
+  public void insertionSortList() throws Exception {
+    ListNode root = new ListNode(1), node = root;
+    node.next = new ListNode(2);
+    node = node.next;
+    node.next = new ListNode(7);
+    node = node.next;
+    node.next = new ListNode(9);
+    node = node.next;
+    node.next = new ListNode(3);
+    node = node.next;
+    node.next = new ListNode(4);
+    node = node.next;
+    node.next = new ListNode(10);
+    node = node.next;
+    node.next = new ListNode(5);
+    node = node.next;
+    node.next = new ListNode(6);
+    node = node.next;
+    node.next = new ListNode(8);
+    node = solution.insertionSortList(root);
+    while (node != null) {
+      System.out.print(node.val + "->");
+      node = node.next;
+    }
+    System.out.println();
+  }
+
+  @Test
+  public void sortList() throws Exception {
+    ListNode root = new ListNode(1), node = root;
+    node.next = new ListNode(2);
+    node = node.next;
+    node.next = new ListNode(7);
+    node = node.next;
+    node.next = new ListNode(9);
+    node = node.next;
+    node.next = new ListNode(3);
+    node = node.next;
+    node.next = new ListNode(4);
+    node = node.next;
+    node.next = new ListNode(10);
+    node = node.next;
+    node.next = new ListNode(5);
+    node = node.next;
+    node.next = new ListNode(6);
+    node = node.next;
+    node.next = new ListNode(8);
+    node = solution.sortList(root);
+    while (node != null) {
+      System.out.print(node.val + "->");
+      node = node.next;
+    }
+    System.out.println();
+  }
+
   /**
    * root = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], k = 3
    *
@@ -60,7 +116,7 @@ public class SortListTest {
       node = node.next;
     }
     System.out.println();*/
-    solution.splitListToParts(null,3);
+    solution.splitListToParts(null, 3);
   }
 
   /**

@@ -1,15 +1,74 @@
 package linkist;
 
 
+import java.util.LinkedList;
 import java.util.Optional;
+
 
 /**
  * @author pinker on 2017/11/27
  */
 public class SortList {
-  public void quickList(ListNode root) {
 
+  public ListNode insertionSortList(ListNode head) {
+    ListNode root = new ListNode(0), cur, node, pre;
+    while (head != null) {
+      cur = root.next;
+      pre = root;
+      while (cur != null && cur.val <= head.val) {
+        pre = cur;
+        cur = cur.next;
+      }
+      node = head.next;
+      if (cur == null) {
+        pre.next = head;
+        head.next = null;
+      } else {
+        head.next = cur;
+        pre.next = head;
+      }
+      head = node;
+    }
+    return root.next;
   }
+
+  public ListNode sortList(ListNode head) {
+    if (head == null || head.next == null) {
+      return head;
+    }
+    ListNode pre = null, fast = head, slow = head;
+    while (fast != null && fast.next != null) {
+      pre = slow;
+      slow = slow.next;
+      fast = fast.next.next;
+    }
+    pre.next = null;
+    ListNode left = sortList(head);
+    ListNode right = sortList(slow);
+    return mergeListNode(left, right);
+  }
+
+  private ListNode mergeListNode(ListNode start, ListNode end) {
+    ListNode head = new ListNode(0), root = head;
+    while (start != null && end != null) {
+      if (start.val > end.val) {
+        head.next = end;
+        end = end.next;
+      } else {
+        head.next = start;
+        start = start.next;
+      }
+      head = head.next;
+    }
+    if (end != null) {
+      head.next = end;
+    }
+    if (start != null) {
+      head.next = start;
+    }
+    return root.next;
+  }
+
 
   public ListNode rotateRight(ListNode head, int k) {
     if (head == null || head.next == null) {
