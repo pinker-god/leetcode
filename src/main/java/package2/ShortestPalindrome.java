@@ -7,7 +7,16 @@ package package2;
 public class ShortestPalindrome {
 
   public String shortestPalindrome(String s) {
-    return "ok";
+    int len = 0;
+    for (int i = s.length() - 1; i >= 0; i--) {
+      if (s.charAt(i) == s.charAt(len)) {
+        len++;
+      }
+    }
+    if (len==s.length()) {
+      return s;
+    }
+    String suffix = s.substring(len);
+    return new StringBuffer(suffix).reverse().toString() + shortestPalindrome(s.substring(0, len)) + suffix;
   }
-
 }
