@@ -10,4 +10,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ComponentScan("package1")
 public class Appconfig {
+  public static void main(String[] args) {
+    //你好吗，谁知道
+
+  }
 }

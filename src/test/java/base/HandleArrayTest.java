@@ -28,16 +28,6 @@ public class HandleArrayTest {
     assertThat(arrs, is(new String[]{"HS", "HS", "HS", "ys", "ys", "ys"}));
   }
 
-  @Test
-  public void arrauInsert() throws Exception {
-    Integer array[] = {2, 5, -2, 6, -3, 8, 0, -7, -9, 4};
-    Arrays.sort(array);
-    int index = Arrays.binarySearch(array, 1);
-    int newIndex = -index - 1;
-    HandleArray arrays = new HandleArray();
-    assertThat(newIndex, is(5));
-    assertThat(arrays.ArrayInsert(array, 1, newIndex), is(new Integer[]{-9, -7, -3, -2, 0, 1, 2, 4, 5, 6, 8}));
-  }
 
   @Test
   public void arraySort() throws Exception {
