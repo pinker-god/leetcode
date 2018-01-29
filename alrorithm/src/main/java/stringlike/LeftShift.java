@@ -1,9 +1,46 @@
 package stringlike;
 
+import java.util.Stack;
+
 /**
  * @author pinker on 2018/1/23
  */
 public class LeftShift {
+  static int reverse(int x) {
+    int sign = x < 0 ? -1 : 1;
+    int num = Math.abs(x);
+    Stack<Integer> stack = new Stack<>();
+    while (num > 0) {
+      stack.push(num % 10);
+      num /= 10;
+    }
+    int degree = 0, total = 0;
+    while (!stack.isEmpty()) {
+      if (degree == 9 && stack.peek() > 2 || Integer.MAX_VALUE % ((int) Math.pow(10, 9)) < total && stack.peek() == 2) {
+        total = 0;
+        break;
+      }
+      total += stack.pop() * (int) Math.pow(10, degree++);
+      System.out.println(total);
+    }
+    return total * sign;
+  }
+
+  public static int reverse1(int x) {
+
+    int sign = x < 0 ? -1 : 1;
+    x = Math.abs(x);
+    int res = 0;
+    while (x > 0) {
+      if (Integer.MAX_VALUE / 10 < res || (Integer.MAX_VALUE - x % 10) < res * 10) {
+        return 0;
+      }
+      res = res * 10 + x % 10;
+      x /= 10;
+    }
+    return sign * res;
+  }
+
   void StringReverse(char[] strs, int start, int end) {
     char tmp;
     while (end > start) {
