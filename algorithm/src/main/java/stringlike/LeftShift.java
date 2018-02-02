@@ -78,9 +78,7 @@ public class LeftShift {
   public Node listRotate(Node root, int walk) {
     listReverse(root, 0, walk - 1);
     listReverse(root, walk, Integer.MAX_VALUE);
-    return root;
-  }
-
+    return root;}
 }
 
 class Node {
