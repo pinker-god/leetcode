@@ -1,4 +1,4 @@
-package algorithm;
+package stringlike;
 
 /**
  * @author pinker on 30/01/2018
