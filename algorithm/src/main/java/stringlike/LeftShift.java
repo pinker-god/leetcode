@@ -1,12 +1,46 @@
 package stringlike;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Stack;
 
 /**
  * @author pinker on 2018/1/23
  */
 public class LeftShift {
+  static int reverse(int x) {
+    int sign = x < 0 ? -1 : 1;
+    int num = Math.abs(x);
+    Stack<Integer> stack = new Stack<>();
+    while (num > 0) {
+      stack.push(num % 10);
+      num /= 10;
+    }
+    int degree = 0, total = 0;
+    while (!stack.isEmpty()) {
+      if (degree == 9 && stack.peek() > 2 || Integer.MAX_VALUE % ((int) Math.pow(10, 9)) < total && stack.peek() == 2) {
+        total = 0;
+        break;
+      }
+      total += stack.pop() * (int) Math.pow(10, degree++);
+      System.out.println(total);
+    }
+    return total * sign;
+  }
+
+  public static int reverse1(int x) {
+
+    int sign = x < 0 ? -1 : 1;
+    x = Math.abs(x);
+    int res = 0;
+    while (x > 0) {
+      if (Integer.MAX_VALUE / 10 < res || (Integer.MAX_VALUE - x % 10) < res * 10) {
+        return 0;
+      }
+      res = res * 10 + x % 10;
+      x /= 10;
+    }
+    return sign * res;
+  }
+
   void StringReverse(char[] strs, int start, int end) {
     char tmp;
     while (end > start) {
@@ -25,60 +59,44 @@ public class LeftShift {
     return new String(strs);
   }
 
-
+  /**
+   * 利用头指针来做链表的翻转.
+   *
+   * @param root  头节点
+   * @param start 开始位置
+   * @param end   结束位置
+   * @return 返回翻转后的链表头节点
+   */
   Node listReverse(Node root, int start, int end) {
-    if(start>end||start<1){
-      return root;
+    Node head = new Node(0);
+    head.next = root;
+    Node pre = head;
+    for (int i = 0; i < start - 1; i++) {
+      pre = pre.next;
     }
-    List<Integer> list = new LinkedList<>();
-    int walk = start;
-    Node node, pre = null;
-    while (walk-- > 0) {
-      pre = root;
-      root = root.next;
+    Node node = pre.next;
+    Node post = node.next;
+    for (int i = 0; i < end - start; i++) {
+      node.next = post.next;
+      post.next = pre.next;
+      pre.next = post;
+      post = node.next;
     }
-    while (root != null && end-- - start > 0) {
-      node = root.next;
-      root.next = pre;
-      pre = root;
-      root = node;
+    return head.next;
+  }
+
+  public Node listRotate(Node root, int walk) {
+    Node node = root;
+    int len = 0;
+    while (node != null) {
+      len++;
+      node = node.next;
     }
-    root = pre;
+    root = listReverse(root, 1, walk);
+    root = listReverse(root, walk + 1, len);
     return root;
   }
-  public Node reverseBetween(Node head, int m, int n) {
-    if (head == null){ return null;}
-    Node dummy = new Node(0);
-    // create a dummy node to mark the head of this list
-    dummy.next = head;
-    Node pre = dummy;
-    // make a pointer pre as a marker for the node before reversing
-    for (int i = 0; i < m - 1; i++) {pre = pre.next;}
 
-    Node start = pre.next;
-    // a pointer to the beginning of a sub-list that will be reversed
-    Node then = start.next;
-    // a pointer to a node that will be reversed
-
-    // 1 - 2 -3 - 4 - 5 ; m=2; n =4 ---> pre = 1, start = 2, then = 3
-    // dummy-> 1 -> 2 -> 3 -> 4 -> 5
-
-    for (int i = 0; i < n - m; i++) {
-      start.next = then.next;
-      then.next = pre.next;
-      pre.next = then;
-      then = start.next;
-    }
-
-    // first reversing : dummy->1 - 3 - 2 - 4 - 5; pre = 1, start = 2, then = 4
-    // second rever
-    //
-    return dummy.next;
-  }
-  public Node listRotate(Node root, int walk) {
-    listReverse(root, 0, walk - 1);
-    listReverse(root, walk, Integer.MAX_VALUE);
-    return root;}
 }
 
 class Node {
